@@ -8,10 +8,9 @@ var vm = new Vue({
     // mock up the user - this well eventually come from the database UMS (user management system)
     user: {
       isAdmin: false,
-      avatar: "thor.png",
-      idLoggedIn: true
+      avatar: null,
+      isLoggedIn: true
     },
-
 
     // this data would also come from the database, but we'll just mock it up for now
     videodata: [
@@ -19,6 +18,10 @@ var vm = new Vue({
       { name: "Stranger Things", thumb: "strangerthings.jpg", vidsource: "strangerthings.mp4", description: "don't get lost in the upside down" },
       { name: "Marvel's The Avengers", thumb: "avengers.jpg", vidsource: "avengers.mp4", description: "will they make black widow action figures this time?" }
     ],
+
+    videotitle: "video title goes here",
+    vidsource: "",
+    videodescription: "video description goes here",
 
     showDetails: false
   },
@@ -37,6 +40,15 @@ var vm = new Vue({
       // the expression evaluates to ture or false - if it's true, set the value equal to
       // the left of the colon. if it's false, set the value equal to the right.
       this.user.isLoggedIn = (this.user.isLoggedIn) ? false : true;
+    },
+
+    showMovieDetails({name, vidsource, description}) {
+      this.videotitle = name;
+      this.vidsource = vidsource;
+      this.videodescription = description;
+
+      // make the movie details show up
+      this.showDetails = true;
 
     }
   }
