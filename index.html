@@ -21,7 +21,7 @@
           <!-- avatar / user icon-->
           <!-- if the user has an avatar, show it -->
           <li>
-            <img src="" alt="user avatar" class="u-avatar">
+            <img v-bind:src="'images/' + user.avatar" alt="user avatar" class="u-avatar">
           </li>
 
           <!-- else show this -->
@@ -33,13 +33,13 @@
           <!-- settings icon / functionality -->
           <!-- if our user object has admin rights, then show this -->
           <li v-if="user.isAdmin">
-            <i class="fas fa-cog" role="button"></i>
+            <i v-on:click="setUserPrefs" class="fas fa-cog" role="button"></i>
           </li>
           <!-- end user settings -->
 
           <!-- log in / log out -->
           <li>
-            <i class="fas fa-power-off u-login" role="button"></i>
+            <i @click="userLogin" class="fas fa-power-off u-login" role="button" :class="{ 'logged-in' : user.isLoggedIn }"></i>
           </li>
         </ul>
       </nav>

@@ -8,7 +8,7 @@ var vm = new Vue({
     // mock up the user - this well eventually come from the database UMS (user management system)
     user: {
       isAdmin: false,
-      avatar: null,
+      avatar: "thor.png",
       idLoggedIn: true
     },
 
@@ -24,6 +24,20 @@ var vm = new Vue({
   },
 
   methods: {
+    setUserPrefs() {
+      //this is the prefereces control, hit the api when ready (or use a component)
+      console.log('set user prefs here');
+    },
 
+    userLogin() {
+      //call the login route and / or load the login component
+      console.log('do login / logout on click');
+      
+      // this is a ternary statement -> shorthand for if / else
+      // the expression evaluates to ture or false - if it's true, set the value equal to
+      // the left of the colon. if it's false, set the value equal to the right.
+      this.user.isLoggedIn = (this.user.isLoggedIn) ? false : true;
+
+    }
   }
 });
