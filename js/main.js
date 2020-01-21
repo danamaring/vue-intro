@@ -7,7 +7,7 @@ var vm = new Vue({
 
     // mock up the user - this well eventually come from the database UMS (user management system)
     user: {
-      isAdmin: false,
+      isadmin: false,
       avatar: null,
       isLoggedIn: true
     },
@@ -26,7 +26,17 @@ var vm = new Vue({
     showDetails: false
   },
 
+  created: function() {
+    //vue instance is ready to go, mostly = add some live data to the VM
+    this.fetchUsers();
+
+  },
+
   methods: {
+    logInOut() {
+      
+    },
+
     setUserPrefs() {
       //this is the prefereces control, hit the api when ready (or use a component)
       console.log('set user prefs here');
@@ -50,6 +60,12 @@ var vm = new Vue({
       // make the movie details show up
       this.showDetails = true;
 
+    },
+
+    fetchUsers() {
+      //get our user data here and push it back into the VM
+      console.log('fetch user data here');
     }
+    
   }
 });
