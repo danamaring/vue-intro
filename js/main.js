@@ -1,5 +1,18 @@
 // todo => use a key to track the current video, or just pass the video in as a ref to the function and grab its source
+Vue.component('poster', {
+  props: {
+    vidsource: String,
+    thumb: String,
+  },
 
+  template: `
+      <li>
+        <a :href="vidsource" v-on:click.prevent="$emit('make-selection')">
+          <img :src="'images/' + thumb" alt="movie poster">
+        </a>
+      </li>
+    `
+})
 var vm = new Vue({
   el: "#app",
 
@@ -51,7 +64,11 @@ var vm = new Vue({
       this.user.isLoggedIn = (this.user.isLoggedIn) ? false : true;
     },
 
-    showMovieDetails({name, vidsource, description}) {
+    showMovieDetails() { //{name, vidsource, description}) 
+      debugger;
+
+      console.log('show movie details');
+      
       this.videotitle = name;
       this.vidsource = vidsource;
       this.videodescription = description;

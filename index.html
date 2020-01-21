@@ -23,9 +23,6 @@
           <li>
             <img v-bind:src="'images/' + user.avatar" alt="user avatar" class="u-avatar">
           </li>
-          <li>
-            <span>Hello, user.uname</span>
-          </li>
 
 
           <!-- else show this -->
@@ -50,11 +47,16 @@
     </header>
 
     <ul class="video-poster-wrapper">
-      <li v-for="movie in videodata">
+      <poster v-for="movie, index) in videodata" v-on:make-selection="showMovieDetails"
+      :vidsource="movie.vidsource"
+      :thumb="movie.thumb"
+      :key="index">
+    </poster>
+      <!-- <li v-for="movie in videodata">
         <a :href="movie.vidsource" @click.prevent="showMovieDetails(movie)">
           <img :src="'images/' + movie.thumb" alt="movie poster">
         </a>
-      </li>
+      </li> -->
     </ul>
 
     <p class="instructions">
